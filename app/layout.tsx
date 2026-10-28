@@ -85,6 +85,13 @@ export default function RootLayout({
           }}
         />
         {children}
+        <script
+          type="module"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({
+            token: '778046c549444205b4b78791bcb9c963',
+          })}
+        />
       </body>
     </html>
   );
