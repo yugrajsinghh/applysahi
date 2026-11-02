@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import Link from 'next/link';
 
 export function InfoPage({
   eyebrow,
@@ -16,14 +15,14 @@ export function InfoPage({
     <main className="info-page">
       <header className="site-header">
         <div className="shell header-inner">
-          <Link className="brand" href="/" aria-label="ApplySahi home">
+          <a className="brand" href="/" aria-label="ApplySahi home">
             <span aria-hidden="true">↓</span>
             ApplySahi
-          </Link>
+          </a>
           <nav aria-label="Information pages">
-            <Link href="/#editor">Resize now</Link>
-            <Link href="/about">About</Link>
-            <Link href="/privacy">Privacy</Link>
+            <a href="/#editor">Resize now</a>
+            <a href="/about">About</a>
+            <a href="/privacy">Privacy</a>
           </nav>
         </div>
       </header>
@@ -34,15 +33,15 @@ export function InfoPage({
         <div className="info-content">{children}</div>
       </article>
       <footer className="shell footer info-footer">
-        <Link className="brand" href="/">
+        <a className="brand" href="/">
           ApplySahi
-        </Link>
+        </a>
         <div className="footer-links">
-          <Link href="/about">About</Link>
-          <Link href="/privacy">Privacy</Link>
-          <Link href="/terms">Terms</Link>
+          <a href="/about">About</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
         </div>
-        <Link href="/#editor">Open the editor →</Link>
+        <a href="/#editor">Open the editor →</a>
       </footer>
     </main>
   );

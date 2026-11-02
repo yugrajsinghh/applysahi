@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import { ArrowRight, ExternalLink, ShieldCheck } from 'lucide-react';
 import { examSlug, getExamBySlug, priorityExams } from '@/lib/exam-seo';
 
@@ -42,12 +41,12 @@ export default async function ExamPage({ params }: PageProps) {
     <main className="exam-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <header className="exam-page-header shell">
-        <Link className="brand" href="/" aria-label="ApplySahi home"><span aria-hidden="true">↓</span> ApplySahi</Link>
-        <Link className="primary-link" href={`/?exam=${slug}#editor`}>Resize now <ArrowRight size={17} /></Link>
+        <a className="brand" href="/" aria-label="ApplySahi home"><span aria-hidden="true">↓</span> ApplySahi</a>
+        <a className="primary-link" href={`/?exam=${slug}#editor`}>Resize now <ArrowRight size={17} /></a>
       </header>
       <article className="exam-article shell">
         <nav className="breadcrumbs" aria-label="Breadcrumb">
-          <Link href="/">Home</Link><span>/</span><Link href="/#requirements">Exam sizes</Link><span>/</span><span>{exam.name}</span>
+          <a href="/">Home</a><span>/</span><a href="/#requirements">Exam sizes</a><span>/</span><span>{exam.name}</span>
         </nav>
         <p className="eyebrow">{exam.authority} · {exam.family} · {exam.cycle}</p>
         <h1>{exam.name} photo and signature size</h1>
@@ -64,7 +63,7 @@ export default async function ExamPage({ params }: PageProps) {
                 <h3>{asset.name}</h3><p>{asset.requirement}</p>
                 {asset.dimensions && <p><strong>Dimensions:</strong> {asset.dimensions}</p>}
                 {asset.dimensionNote && <small>{asset.dimensionNote}</small>}
-                {asset.preset && <Link href={`/?exam=${slug}&asset=${index}#editor`}>Use {asset.preset.maximumKb} KB{asset.preset.width ? ` · ${asset.preset.width}×${asset.preset.height} px` : ''} preset <ArrowRight size={15} /></Link>}
+                {asset.preset && <a href={`/?exam=${slug}&asset=${index}#editor`}>Use {asset.preset.maximumKb} KB{asset.preset.width ? ` · ${asset.preset.width}×${asset.preset.height} px` : ''} preset <ArrowRight size={15} /></a>}
               </article>
             ))}
           </div>
@@ -72,15 +71,15 @@ export default async function ExamPage({ params }: PageProps) {
         <section className="exam-steps">
           <h2>How to prepare the file</h2>
           <ol><li>Choose the matching photo or signature preset.</li><li>Select your image. It is processed locally in your browser.</li><li>Check the preview, dimensions and final KB size.</li><li>Download the clearly named file and verify it in the official portal.</li></ol>
-          <Link className="primary-link" href={`/?exam=${slug}#editor`}>Open the free resizer <ArrowRight size={17} /></Link>
+          <a className="primary-link" href={`/?exam=${slug}#editor`}>Open the free resizer <ArrowRight size={17} /></a>
         </section>
         <section className="official-source-box">
           <h2>Official source</h2><p>Requirements can change between application cycles. The active application and current official notice always take priority.</p>
           <a href={exam.sourceUrl} target="_blank" rel="noreferrer">{exam.sourceLabel} <ExternalLink size={15} /></a>
         </section>
-        {related.length > 0 && <section><h2>Related exam sizes</h2><div className="related-exams">{related.map((item) => <Link key={item.name} href={`/exams/${examSlug(item.name)}`}>{item.name}<span>{item.cycle} requirements →</span></Link>)}</div></section>}
+        {related.length > 0 && <section><h2>Related exam sizes</h2><div className="related-exams">{related.map((item) => <a key={item.name} href={`/exams/${examSlug(item.name)}`}>{item.name}<span>{item.cycle} requirements →</span></a>)}</div></section>}
       </article>
-      <footer className="shell footer"><Link href="/about">About</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></footer>
+      <footer className="shell footer"><a href="/about">About</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></footer>
     </main>
   );
 }

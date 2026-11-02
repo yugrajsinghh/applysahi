@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import {
   ArrowDown,
   ArrowRight,
@@ -526,9 +525,9 @@ export default function Home() {
         </div>
         <div className="tool-card-grid">
           {siteTools.map(({ slug, name, short, icon: Icon, color }) => (
-            <Link key={slug} href={`/tools/${slug}`} className={`tool-card tool-card-${color}`}>
+            <a key={slug} href={`/tools/${slug}`} className={`tool-card tool-card-${color}`}>
               <span><Icon size={23}/></span><strong>{name}</strong><p>{short}</p><small>Open tool <ArrowRight size={14}/></small>
-            </Link>
+            </a>
           ))}
         </div>
       </section>
