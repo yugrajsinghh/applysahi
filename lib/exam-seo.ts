@@ -11,9 +11,9 @@ export function examSlug(name: string) {
   return name.toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
-export const priorityExams = priorityExamNames
-  .map((name) => examRequirements.find((exam) => exam.name === name))
-  .filter((exam): exam is NonNullable<typeof exam> => Boolean(exam));
+// Every verified entry gets its own indexable guide. `priorityExamNames` remains
+// available for places that want to highlight the most searched exams first.
+export const priorityExams = examRequirements;
 
 export function getExamBySlug(slug: string) {
   return priorityExams.find((exam) => examSlug(exam.name) === slug);

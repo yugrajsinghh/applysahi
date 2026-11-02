@@ -1,0 +1,6 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowRight, Crop, FileCheck2, SlidersHorizontal } from 'lucide-react';
+import { ToolPageShell } from '@/components/tool-page-shell';
+export const metadata: Metadata={title:'Exam Photo and Signature Resizer',description:'Resize, crop and compress a photo or signature to exam form KB and pixel requirements.'};
+export default function Page(){return <ToolPageShell title="Photo & signature resizer" description="Prepare a JPG, PNG or WebP for exact KB, format and pixel requirements." points={['Set the maximum KB and required dimensions.','Crop blank edges, rotate and preview before download.','Downloads use clear exam-ready filenames.']}><div className="launch-tool"><div><Crop/><h2>Crop and resize visually</h2><p>The complete editor is on the homepage so your exam preset and preview stay together.</p></div><div><SlidersHorizontal/><h2>Exact controls</h2><p>Choose KB, pixels and output format before processing.</p></div><div><FileCheck2/><h2>Check before upload</h2><p>See the finished size and dimensions before downloading.</p></div><Link className="tool-action" href="/#editor">Open the resizer <ArrowRight size={18}/></Link></div></ToolPageShell>}

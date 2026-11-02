@@ -1,0 +1,6 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowRight, BookOpenCheck, Search, ShieldCheck } from 'lucide-react';
+import { ToolPageShell } from '@/components/tool-page-shell';
+export const metadata: Metadata={title:'Exam Photo and Signature Size Finder',description:'Search verified photo, signature and document requirements for major Indian exams.'};
+export default function Page(){return <ToolPageShell title="Exam size finder" description="Search 56 major exams and apply a published photo or signature preset in one click." points={['Shows KB, format and dimensions when officially published.','Every entry includes its source and review status.','Apply a preset directly to the image resizer.']}><div className="launch-tool"><div><Search/><h2>Search 56 exams</h2><p>Find NEET, JEE, SSC, UPSC, banking and state exams.</p></div><div><BookOpenCheck/><h2>Read the source</h2><p>We show what is verified and what must be checked.</p></div><div><ShieldCheck/><h2>Avoid guessed rules</h2><p>Missing dimensions are labelled instead of invented.</p></div><Link className="tool-action red" href="/#requirements">Find my exam size <ArrowRight size={18}/></Link></div></ToolPageShell>}

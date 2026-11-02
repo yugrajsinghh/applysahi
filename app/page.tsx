@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import {
   ArrowDown,
   ArrowRight,
@@ -30,8 +31,10 @@ import {
   safeWorkingDimensions,
 } from '@/lib/image-metadata';
 import { ExamRequirements } from '@/components/exam-requirements';
-import type { ExamPreset } from '@/lib/exam-requirements';
+import { ImageToPdf } from '@/components/image-to-pdf';
+import { examRequirements, type ExamPreset } from '@/lib/exam-requirements';
 import { getExamBySlug } from '@/lib/exam-seo';
+import { siteTools } from '@/lib/tools';
 
 type Result = {
   url: string;
@@ -44,7 +47,18 @@ type Result = {
   type: string;
 };
 type DownloadContext = { exam: string; asset: string };
+type LocalUsageStats = {
+  completedFiles: number;
+  conversionAttempts: number;
+  successfulConversions: number;
+};
 const emptyCrop = { top: 0, right: 0, bottom: 0, left: 0 };
+const emptyUsageStats: LocalUsageStats = {
+  completedFiles: 0,
+  conversionAttempts: 0,
+  successfulConversions: 0,
+};
+const USAGE_STORAGE_KEY = 'applysahi-usage-v1';
 const formats = {
   'image/jpeg': 'JPG',
   'image/png': 'PNG',
@@ -114,6 +128,48 @@ export default function Home() {
   const [downloadContext, setDownloadContext] =
     useState<DownloadContext | null>(null);
   const [optimizationNote, setOptimizationNote] = useState('');
+  const [usageStats, setUsageStats] =
+    useState<LocalUsageStats>(emptyUsageStats);
+
+  useEffect(() => {
+    try {
+      const stored = window.localStorage.getItem(USAGE_STORAGE_KEY);
+      if (!stored) return;
+      const parsed = JSON.parse(stored) as Partial<LocalUsageStats>;
+      setUsageStats({
+        completedFiles: Number(parsed.completedFiles) || 0,
+        conversionAttempts: Number(parsed.conversionAttempts) || 0,
+        successfulConversions: Number(parsed.successfulConversions) || 0,
+      });
+    } catch {
+      // Private browsing or blocked storage should never stop the editor.
+    }
+  }, []);
+
+  function updateUsageStats(
+    update: (current: LocalUsageStats) => LocalUsageStats,
+  ) {
+    setUsageStats((current) => {
+      const next = update(current);
+      try {
+        window.localStorage.setItem(USAGE_STORAGE_KEY, JSON.stringify(next));
+      } catch {
+        // Usage tracking is optional; image processing must continue to work.
+      }
+      return next;
+    });
+  }
+
+  useEffect(() => {
+    const recordCompletedFile = () =>
+      updateUsageStats((current) => ({
+        ...current,
+        completedFiles: current.completedFiles + 1,
+      }));
+    window.addEventListener('applysahi:file-completed', recordCompletedFile);
+    return () =>
+      window.removeEventListener('applysahi:file-completed', recordCompletedFile);
+  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -357,6 +413,12 @@ export default function Home() {
         maximumKb: selected.maximumKb,
         type: selected.type,
       });
+      updateUsageStats((current) => ({
+        ...current,
+        conversionAttempts: current.conversionAttempts + 1,
+        successfulConversions:
+          current.successfulConversions + (converted.fits ? 1 : 0),
+      }));
     } catch (e) {
       if (run === generation.current)
         setError(
@@ -398,7 +460,8 @@ export default function Home() {
             ApplySahi
           </a>
           <nav aria-label="Main navigation">
-            <a href="#editor">Resize now</a>
+            <a href="#tools">All tools</a>
+            <a href="#editor">Photo resizer</a>
             <a href="#requirements">Exam sizes</a>
             <a href="#guide">How to use</a>
             <span className="free-label">Free · No sign-up</span>
@@ -414,7 +477,7 @@ export default function Home() {
             Right size <span>matters.</span>
           </h1>
           <p>
-            Resize your photo or signature for your exam. Free and private.
+            Officially sourced exam rules. Your files never leave your device.
           </p>
           <div className="hero-actions">
             <a className="secondary-link exam-link" href="#requirements">
@@ -424,20 +487,49 @@ export default function Home() {
               Resize my image <ArrowDown size={17} />
             </a>
           </div>
+          <div className="creator-trust">
+            <span>Made by a NEET guy</span>
+            <small>Built for students filling real application forms</small>
+          </div>
         </div>
         <div className="hero-proof">
           <div>
-            <strong>56</strong>
-            <span>major exams researched</span>
+            <strong>{examRequirements.length}</strong>
+            <span>verified exam guides</span>
           </div>
           <div>
-            <strong>0</strong>
-            <span>images uploaded</span>
+            <strong>{usageStats.completedFiles.toLocaleString('en-IN')}</strong>
+            <span>files prepared on this device</span>
           </div>
           <div>
-            <strong>₹0</strong>
-            <span>to use</span>
+            <strong>
+              {usageStats.conversionAttempts >= 20
+                ? `${Math.round(
+                    (usageStats.successfulConversions /
+                      usageStats.conversionAttempts) *
+                      100,
+                  )}%`
+                : 'Live'}
+            </strong>
+            <span>
+              {usageStats.conversionAttempts >= 20
+                ? 'measured size-target success'
+                : 'success measurement starting'}
+            </span>
           </div>
+        </div>
+      </section>
+      <section id="tools" className="shell tool-directory" aria-labelledby="tools-title">
+        <div className="section-heading-simple">
+          <div><p className="eyebrow">CHOOSE WHAT YOU NEED</p><h2 id="tools-title">Student file tools</h2></div>
+          <p>Five focused tools. No sign-up, watermark or file upload.</p>
+        </div>
+        <div className="tool-card-grid">
+          {siteTools.map(({ slug, name, short, icon: Icon, color }) => (
+            <Link key={slug} href={`/tools/${slug}`} className={`tool-card tool-card-${color}`}>
+              <span><Icon size={23}/></span><strong>{name}</strong><p>{short}</p><small>Open tool <ArrowRight size={14}/></small>
+            </Link>
+          ))}
         </div>
       </section>
       <section
@@ -812,7 +904,18 @@ export default function Home() {
                   <Button
                     className="download-button"
                     nativeButton={false}
-                    render={<a href={result.url} download={result.name} />}
+                    render={
+                      <a
+                        href={result.url}
+                        download={result.name}
+                        onClick={() =>
+                          updateUsageStats((current) => ({
+                            ...current,
+                            completedFiles: current.completedFiles + 1,
+                          }))
+                        }
+                      />
+                    }
                   >
                     <Download size={18} />
                     {result.fits
@@ -843,6 +946,7 @@ export default function Home() {
           </aside>
         </div>
       </section>
+      <ImageToPdf />
       <ExamRequirements onUsePreset={useExamPreset} />
       <section id="guide" className="shell guide">
         <div>
@@ -890,8 +994,9 @@ export default function Home() {
           <details>
             <summary>Can I use PDFs or iPhone HEIC photos?</summary>
             <p>
-              This version supports JPG, PNG and WebP images. Export HEIC as JPG
-              first. PDF tools are planned but are not available in this editor.
+              Yes. Version 7 includes Images to PDF, PDF merger and HEIC to JPG
+              as separate tools. Convert the file first, then use the photo
+              resizer if your application also has a KB or pixel limit.
             </p>
           </details>
         </div>
@@ -917,6 +1022,7 @@ export default function Home() {
           <a href="/about">About</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
+          <span className="version-badge">Version 7</span>
         </div>
         <a href="#editor">Back to editor ↑</a>
       </footer>

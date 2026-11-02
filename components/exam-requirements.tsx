@@ -4,6 +4,8 @@ import { useMemo, useState } from 'react';
 import {
   BadgeCheck,
   ExternalLink,
+  Flag,
+  MessageCircleQuestion,
   Ruler,
   Search,
   SlidersHorizontal,
@@ -12,7 +14,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { examRequirements, type ExamPreset } from '@/lib/exam-requirements';
-import { examSlug, priorityExamNames } from '@/lib/exam-seo';
+import { examSlug } from '@/lib/exam-seo';
 
 type Props = {
   onUsePreset: (
@@ -212,13 +214,9 @@ export function ExamRequirements({ onUsePreset }: Props) {
                       Open official source: {item.sourceLabel}
                       <ExternalLink size={14} />
                     </a>
-                    {priorityExamNames.includes(
-                      item.name as (typeof priorityExamNames)[number],
-                    ) && (
-                      <a className="exam-guide-link" href={`/exams/${examSlug(item.name)}`}>
-                        Read the complete {item.name} size guide
-                      </a>
-                    )}
+                    <a className="exam-guide-link" href={`/exams/${examSlug(item.name)}`}>
+                      Read the complete {item.name} size guide
+                    </a>
                   </div>
                 )}
               </article>
@@ -234,6 +232,32 @@ export function ExamRequirements({ onUsePreset }: Props) {
               </p>
             </div>
           )}
+        </div>
+        <div className="library-actions" aria-label="Exam library feedback">
+          <article>
+            <MessageCircleQuestion size={23} />
+            <div>
+              <strong>Can’t find your exam?</strong>
+              <p>Request it and include the official notification link if you have it.</p>
+            </div>
+            <a
+              href="mailto:hello@applysahi.com?subject=Request%20an%20exam%20for%20ApplySahi%20V7&body=Exam%20name%3A%0AOfficial%20notification%20link%3A%0AApplication%20closing%20date%3A"
+            >
+              Request an exam
+            </a>
+          </article>
+          <article>
+            <Flag size={23} />
+            <div>
+              <strong>Found an incorrect requirement?</strong>
+              <p>Report the exam, document type and official source so we can verify it.</p>
+            </div>
+            <a
+              href="mailto:hello@applysahi.com?subject=Report%20an%20ApplySahi%20requirement&body=Exam%20name%3A%0ADocument%20type%3A%0AWhat%20looks%20incorrect%3A%0AOfficial%20source%20link%3A"
+            >
+              Report a requirement
+            </a>
+          </article>
         </div>
         <p className="library-disclaimer">
           Requirements change between application cycles. “Exact bulletin” means

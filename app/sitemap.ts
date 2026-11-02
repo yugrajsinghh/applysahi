@@ -6,11 +6,12 @@ const siteUrl =
   'https://applysahi.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages: MetadataRoute.Sitemap = ['', '/about', '/privacy', '/terms'].map((path) => ({
+  const paths = ['', '/about', '/privacy', '/terms', '/tools/photo-signature-resizer', '/tools/exam-size-finder', '/tools/image-to-pdf', '/tools/heic-to-jpg', '/tools/pdf-merger'];
+  const pages: MetadataRoute.Sitemap = paths.map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date('2026-09-11'),
     changeFrequency: path ? 'monthly' : 'weekly',
-    priority: path ? 0.6 : 1,
+    priority: path.startsWith('/tools/') ? 0.9 : path ? 0.6 : 1,
   }));
   const examPages: MetadataRoute.Sitemap = priorityExams.map((exam) => ({
     url: `${siteUrl}/exams/${examSlug(exam.name)}`,

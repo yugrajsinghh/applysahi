@@ -1,4 +1,4 @@
-# ApplySahi V1
+# ApplySahi Version 7
 
 ApplySahi resizes exam photographs and signatures in the student's browser. Images stay on the device and are not uploaded to a ApplySahi server.
 
@@ -33,12 +33,12 @@ node --test tests/image-fit.test.mjs
 - `app/page.tsx` — homepage and image-resizing experience
 - `app/globals.css` — site appearance and responsive layout
 - `components/exam-requirements.tsx` — searchable exam library interface
-- `lib/exam-requirements.ts` — requirements for 56 exams
+- `lib/exam-requirements.ts` — verified, source-linked exam requirements
 - `lib/image-fit.ts` — resize, crop and compression logic
 - `lib/image-metadata.ts` — safe image-dimension checks
 - `app/privacy/page.tsx`, `app/terms/page.tsx`, `app/about/page.tsx` — information pages
 
-## Current V1 limits
+## Current Version 7 limits
 
 - Supported input formats: JPG, PNG and WebP
 - Maximum input size: 25 MB
@@ -47,11 +47,11 @@ node --test tests/image-fit.test.mjs
 
 ## Privacy model
 
-Image editing runs locally in the visitor's browser. ApplySahi V1 has no user accounts, image database or cloud image storage.
+Image editing runs locally in the visitor's browser. ApplySahi Version 7 has no user accounts, image database or cloud image storage.
 
 ## SEO launch setup
 
-The project includes unique metadata, canonical URLs, `robots.txt`, an XML sitemap, WebSite/WebApplication structured data, and dedicated pages for 15 high-demand exams.
+The project includes unique metadata, canonical URLs, `robots.txt`, an XML sitemap, WebSite/WebApplication structured data, and dedicated pages for every verified exam in the library.
 
 Set these environment variables in the hosting dashboard before the production build:
 

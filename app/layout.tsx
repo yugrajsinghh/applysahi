@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { examRequirements } from '@/lib/exam-requirements';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     template: '%s | ApplySahi',
   },
   description:
-    'Find official image requirements for 56 major Indian exams, then resize photos and signatures by KB and pixels privately in your browser.',
+    `Find official image requirements for ${examRequirements.length} verified Indian exams, then resize photos and signatures by KB and pixels privately in your browser.`,
   applicationName: 'ApplySahi',
   keywords: [
     'exam photo resizer',
