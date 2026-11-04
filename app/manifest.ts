@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'ApplySahi — Exam Photo & Signature Resizer',
-    short_name: 'ApplySahi',
+    name: 'HateExam — Exam Photo & Signature Resizer',
+    short_name: 'HateExam',
     description:
       'Prepare exam photographs and signatures by KB, pixels and format.',
     start_url: '/',

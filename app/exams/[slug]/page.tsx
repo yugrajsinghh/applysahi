@@ -32,8 +32,8 @@ export default async function ExamPage({ params }: PageProps) {
     '@context': 'https://schema.org', '@type': 'Article',
     headline: `${exam.name} photo and signature requirements ${exam.cycle}`,
     dateModified: '2026-10-18',
-    author: { '@type': 'Organization', name: 'ApplySahi' },
-    publisher: { '@type': 'Organization', name: 'ApplySahi' },
+    author: { '@type': 'Organization', name: 'HateExam' },
+    publisher: { '@type': 'Organization', name: 'HateExam' },
     mainEntityOfPage: `/exams/${slug}`,
   };
 
@@ -41,7 +41,7 @@ export default async function ExamPage({ params }: PageProps) {
     <main className="exam-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <header className="exam-page-header shell">
-        <a className="brand" href="/" aria-label="ApplySahi home"><span aria-hidden="true">↓</span> ApplySahi</a>
+        <a className="brand" href="/" aria-label="HateExam home"><span aria-hidden="true">↓</span> HateExam</a>
         <a className="primary-link" href={`/?exam=${slug}#editor`}>Resize now <ArrowRight size={17} /></a>
       </header>
       <article className="exam-article shell">

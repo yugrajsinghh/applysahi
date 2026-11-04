@@ -1,6 +1,6 @@
-# ApplySahi Version 7
+# HateExam Version 7
 
-ApplySahi resizes exam photographs and signatures in the student's browser. Images stay on the device and are not uploaded to a ApplySahi server.
+HateExam resizes exam photographs and signatures in the student's browser. Images stay on the device and are not uploaded to a HateExam server.
 
 ## Open in VS Code
 
@@ -47,7 +47,7 @@ node --test tests/image-fit.test.mjs
 
 ## Privacy model
 
-Image editing runs locally in the visitor's browser. ApplySahi Version 7 has no user accounts, image database or cloud image storage.
+Image editing runs locally in the visitor's browser. HateExam Version 7 has no user accounts, image database or cloud image storage.
 
 ## SEO launch setup
 

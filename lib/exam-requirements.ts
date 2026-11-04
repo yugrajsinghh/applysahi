@@ -263,7 +263,7 @@ export const examRequirements: ExamRequirement[] = [
     'Exact bulletin',
     'JAM 2026 document requirements',
     'https://jam2026.iitb.ac.in/DocReq.html',
-    'The live requirements page and brochure differ on the signature minimum size. ApplySahi uses the live page range and flags this conflict.',
+    'The live requirements page and brochure differ on the signature minimum size. HateExam uses the live page range and flags this conflict.',
     [
       {
         name: 'Photograph',
@@ -501,7 +501,7 @@ export const examRequirements: ExamRequirement[] = [
     'Exact bulletin',
     'SSC CGL 2026 Notice',
     sscCommonSource,
-    'SSC captures the photograph live; ApplySahi is useful for the signature.',
+    'SSC captures the photograph live; HateExam is useful for the signature.',
     sscSignature6,
   ),
   exam(
@@ -578,7 +578,7 @@ export const examRequirements: ExamRequirement[] = [
     'Exact bulletin',
     'SSC CHT 2026 Notice',
     'https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cht_2026.pdf',
-    'SSC captures the photograph live; ApplySahi is useful for the signature.',
+    'SSC captures the photograph live; HateExam is useful for the signature.',
     sscSignature6,
   ),
   exam(
@@ -669,7 +669,7 @@ export const examRequirements: ExamRequirement[] = [
     'Portal check needed',
     'RBI Opportunities — Assistant 2026',
     'https://opportunities.rbi.org.in/scripts/bs_viewcontent.aspx?Id=4912',
-    'The official page is protected by an interactive verification step, so ApplySahi does not claim a numeric preset. Use the instructions shown inside the active application.',
+    'The official page is protected by an interactive verification step, so HateExam does not claim a numeric preset. Use the instructions shown inside the active application.',
     verifyAssets,
   ),
   exam(

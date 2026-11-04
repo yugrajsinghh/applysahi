@@ -3,7 +3,7 @@ import { InfoPage } from '@/components/info-page';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'How ApplySahi handles images, technical information and browser storage.',
+  description: 'How HateExam handles images, technical information and browser storage.',
   alternates: { canonical: '/privacy' },
 };
 
@@ -11,10 +11,10 @@ export default function PrivacyPage() {
   return (
     <InfoPage eyebrow="PRIVACY POLICY" title="Your files stay on your device." updated="18 October 2026">
       <p>
-        This policy explains how ApplySahi handles information when you use
-        applysahi.com. The current image editor processes selected photographs
+        This policy explains how HateExam handles information when you use
+        hateexam.com. The current image editor processes selected photographs
         and signatures inside your browser. It does not upload those files to an
-        ApplySahi server or retain a server copy after you leave the page.
+        HateExam server or retain a server copy after you leave the page.
       </p>
       <h2>Files and downloads</h2>
       <p>
@@ -24,7 +24,7 @@ export default function PrivacyPage() {
       </p>
       <h2>Accounts and information you provide</h2>
       <p>
-        ApplySahi currently requires no account and does not request your name,
+        HateExam currently requires no account and does not request your name,
         application number, identity document or payment information. If you
         email us, we receive your email address and the information you choose to
         include. Do not email examination documents or identity photographs.
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
       </p>
       <h2>Cookies, analytics and advertising</h2>
       <p>
-        ApplySahi currently uses no advertising cookies, behavioural advertising
+        HateExam currently uses no advertising cookies, behavioural advertising
         or third-party analytics. Essential browser or hosting functions may use
         limited storage needed to operate or secure the site. We will update this
         policy and, where required, request consent before introducing analytics
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
         You can stop using the service, clear browser data and delete downloaded
         files at any time. For questions, correction requests or privacy
         concerns, contact{' '}
-        <a href="mailto:privacy@applysahi.com">privacy@applysahi.com</a>. We may
+        <a href="mailto:privacy@hateexam.com">privacy@hateexam.com</a>. We may
         need enough information to understand and respond to the request.
       </p>
       <h2>External official websites</h2>

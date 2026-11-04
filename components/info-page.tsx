@@ -15,9 +15,9 @@ export function InfoPage({
     <main className="info-page">
       <header className="site-header">
         <div className="shell header-inner">
-          <a className="brand" href="/" aria-label="ApplySahi home">
+          <a className="brand" href="/" aria-label="HateExam home">
             <span aria-hidden="true">↓</span>
-            ApplySahi
+            HateExam
           </a>
           <nav aria-label="Information pages">
             <a href="/#editor">Resize now</a>
@@ -34,7 +34,7 @@ export function InfoPage({
       </article>
       <footer className="shell footer info-footer">
         <a className="brand" href="/">
-          ApplySahi
+          HateExam
         </a>
         <div className="footer-links">
           <a href="/about">About</a>

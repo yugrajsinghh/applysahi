@@ -241,7 +241,7 @@ export function ExamRequirements({ onUsePreset }: Props) {
               <p>Request it and include the official notification link if you have it.</p>
             </div>
             <a
-              href="mailto:hello@applysahi.com?subject=Request%20an%20exam%20for%20ApplySahi%20V7&body=Exam%20name%3A%0AOfficial%20notification%20link%3A%0AApplication%20closing%20date%3A"
+              href="mailto:hello@hateexam.com?subject=Request%20an%20exam%20for%20HateExam%20V7&body=Exam%20name%3A%0AOfficial%20notification%20link%3A%0AApplication%20closing%20date%3A"
             >
               Request an exam
             </a>
@@ -253,7 +253,7 @@ export function ExamRequirements({ onUsePreset }: Props) {
               <p>Report the exam, document type and official source so we can verify it.</p>
             </div>
             <a
-              href="mailto:hello@applysahi.com?subject=Report%20an%20ApplySahi%20requirement&body=Exam%20name%3A%0ADocument%20type%3A%0AWhat%20looks%20incorrect%3A%0AOfficial%20source%20link%3A"
+              href="mailto:hello@hateexam.com?subject=Report%20a%20HateExam%20requirement&body=Exam%20name%3A%0ADocument%20type%3A%0AWhat%20looks%20incorrect%3A%0AOfficial%20source%20link%3A"
             >
               Report a requirement
             </a>
@@ -263,7 +263,7 @@ export function ExamRequirements({ onUsePreset }: Props) {
           Requirements change between application cycles. “Exact bulletin” means
           the displayed cycle was read from an official source. “Authority
           guide” is a useful starting profile that still requires a
-          current-notice check. ApplySahi sets maximum size and dimensions; it
+          current-notice check. HateExam sets maximum size and dimensions; it
           cannot verify face percentage, document validity or portal acceptance.
         </p>
       </div>

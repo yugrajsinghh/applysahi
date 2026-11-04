@@ -16,7 +16,7 @@ function cleanPdfName(value: string) {
     .replace(/\.pdf$/i, '')
     .replace(/[^a-z0-9-_ ]/gi, '')
     .replace(/\s+/g, '_');
-  return `${cleaned || 'APPLYSAHI_DOCUMENT'}_READY.pdf`;
+  return `${cleaned || 'HATEEXAM_DOCUMENT'}_READY.pdf`;
 }
 
 async function imageAsJpeg(file: File) {
@@ -50,7 +50,7 @@ export function ImageToPdf() {
   const input = useRef<HTMLInputElement>(null);
   const [files, setFiles] = useState<File[]>([]);
   const [pageMode, setPageMode] = useState<PageMode>('a4');
-  const [filename, setFilename] = useState('APPLYSAHI_DOCUMENT');
+  const [filename, setFilename] = useState('HATEEXAM_DOCUMENT');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
 
@@ -79,8 +79,8 @@ export function ImageToPdf() {
     try {
       const { PDFDocument } = await import('pdf-lib');
       const pdfDocument = await PDFDocument.create();
-      pdfDocument.setCreator('ApplySahi Version 7');
-      pdfDocument.setProducer('ApplySahi browser PDF tool');
+      pdfDocument.setCreator('HateExam Version 7');
+      pdfDocument.setProducer('HateExam browser PDF tool');
 
       for (const file of files) {
         const converted = await imageAsJpeg(file);
@@ -121,7 +121,7 @@ export function ImageToPdf() {
       link.download = cleanPdfName(filename);
       link.click();
       window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-      window.dispatchEvent(new Event('applysahi:file-completed'));
+      window.dispatchEvent(new Event('hateexam:file-completed'));
     } catch (cause) {
       setError(
         cause instanceof Error

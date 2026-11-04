@@ -3,7 +3,7 @@ import { examSlug, priorityExams } from '@/lib/exam-seo';
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  'https://applysahi.com';
+  'https://hateexam.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = ['', '/about', '/privacy', '/terms', '/tools/photo-signature-resizer', '/tools/exam-size-finder', '/tools/image-to-pdf', '/tools/heic-to-jpg', '/tools/pdf-merger'];

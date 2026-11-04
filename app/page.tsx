@@ -57,7 +57,7 @@ const emptyUsageStats: LocalUsageStats = {
   conversionAttempts: 0,
   successfulConversions: 0,
 };
-const USAGE_STORAGE_KEY = 'applysahi-usage-v1';
+const USAGE_STORAGE_KEY = 'hateexam-usage-v1';
 const formats = {
   'image/jpeg': 'JPG',
   'image/png': 'PNG',
@@ -101,7 +101,7 @@ function readyFilename(
     return `${examFilePart(context.exam)}_${assetFilePart(context.asset)}_READY.${extension}`;
   }
   const original = filePart(originalName.replace(/\.[^/.]+$/, '')) || 'IMAGE';
-  return `${original}_APPLYSAHI_READY.${extension}`;
+  return `${original}_HATEEXAM_READY.${extension}`;
 }
 
 export default function Home() {
@@ -165,9 +165,9 @@ export default function Home() {
         ...current,
         completedFiles: current.completedFiles + 1,
       }));
-    window.addEventListener('applysahi:file-completed', recordCompletedFile);
+    window.addEventListener('hateexam:file-completed', recordCompletedFile);
     return () =>
-      window.removeEventListener('applysahi:file-completed', recordCompletedFile);
+      window.removeEventListener('hateexam:file-completed', recordCompletedFile);
   }, []);
 
   useEffect(() => {
@@ -452,11 +452,11 @@ export default function Home() {
       </a>
       <header className="site-header">
         <div className="shell header-inner">
-          <a className="brand" href="/" aria-label="ApplySahi home">
+          <a className="brand" href="/" aria-label="HateExam home">
             <span>
               <ArrowDown size={21} />
             </span>
-            ApplySahi
+            HateExam
           </a>
           <nav aria-label="Main navigation">
             <a href="#tools">All tools</a>
@@ -975,7 +975,7 @@ export default function Home() {
             <p>
               PNG does not respond to a photo-quality slider like JPG does. Try
               JPG for photos and signatures on white paper. If dimensions are
-              fixed, ApplySahi reports a missed size target instead of silently
+              fixed, HateExam reports a missed size target instead of silently
               making the image smaller.
             </p>
           </details>
@@ -984,7 +984,7 @@ export default function Home() {
               Will this guarantee that my application is accepted?
             </summary>
             <p>
-              No. ApplySahi checks the requirements you enter. Your form may also
+              No. HateExam checks the requirements you enter. Your form may also
               require a particular background, face position, recent photograph,
               minimum file size or live capture. Check the official
               instructions.
@@ -1015,7 +1015,7 @@ export default function Home() {
       </section>
       <footer className="shell footer">
         <a className="brand" href="/">
-          ApplySahi
+          HateExam
         </a>
         <div className="footer-links">
           <a href="/about">About</a>

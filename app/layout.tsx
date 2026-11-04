@@ -5,15 +5,15 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ??
-      'https://applysahi.com',
+      'https://hateexam.com',
   ),
   title: {
-    default: 'ApplySahi — Exam Photo & Signature Resizer',
-    template: '%s | ApplySahi',
+    default: 'HateExam — Exam Photo & Signature Resizer',
+    template: '%s | HateExam',
   },
   description:
     `Find official image requirements for ${examRequirements.length} verified Indian exams, then resize photos and signatures by KB and pixels privately in your browser.`,
-  applicationName: 'ApplySahi',
+  applicationName: 'HateExam',
   keywords: [
     'exam photo resizer',
     'signature resizer',
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
   manifest: '/manifest.webmanifest',
   openGraph: {
     type: 'website',
-    title: 'ApplySahi — Exam Photo & Signature Resizer',
+    title: 'HateExam — Exam Photo & Signature Resizer',
     description:
       'Resize exam photos and signatures by KB, pixels and format without uploading them.',
-    siteName: 'ApplySahi',
+    siteName: 'HateExam',
   },
   twitter: {
     card: 'summary',
-    title: 'ApplySahi — Exam Photo & Signature Resizer',
+    title: 'HateExam — Exam Photo & Signature Resizer',
     description:
       'Resize exam photos and signatures by KB, pixels and format without uploading them.',
   },
@@ -46,18 +46,18 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL ??
-    'https://applysahi.com';
+    'https://hateexam.com';
   const websiteStructuredData = {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'ApplySahi',
-      alternateName: ['ApplySahi Exam Resizer'],
+      name: 'HateExam',
+      alternateName: ['HateExam Exam Resizer'],
       url: siteUrl,
     };
   const applicationStructuredData = {
       '@context': 'https://schema.org',
       '@type': 'WebApplication',
-      name: 'ApplySahi Exam Photo & Signature Resizer',
+      name: 'HateExam Exam Photo & Signature Resizer',
       url: siteUrl,
       applicationCategory: 'UtilitiesApplication',
       operatingSystem: 'Any modern web browser',
