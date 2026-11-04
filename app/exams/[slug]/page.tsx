@@ -31,7 +31,7 @@ export default async function ExamPage({ params }: PageProps) {
   const articleJsonLd = {
     '@context': 'https://schema.org', '@type': 'Article',
     headline: `${exam.name} photo and signature requirements ${exam.cycle}`,
-    dateModified: '2026-10-18',
+    dateModified: '2026-11-04',
     author: { '@type': 'Organization', name: 'HateExam' },
     publisher: { '@type': 'Organization', name: 'HateExam' },
     mainEntityOfPage: `/exams/${slug}`,

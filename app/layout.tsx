@@ -8,11 +8,11 @@ export const metadata: Metadata = {
       'https://hateexam.com',
   ),
   title: {
-    default: 'HateExam — Exam Photo & Signature Resizer',
+    default: 'Free Exam Photo & Signature Resizer | HateExam',
     template: '%s | HateExam',
   },
   description:
-    `Find official image requirements for ${examRequirements.length} verified Indian exams, then resize photos and signatures by KB and pixels privately in your browser.`,
+    `Resize exam photos and signatures to exact KB, pixel and format requirements for NEET, JEE, SSC and ${examRequirements.length} verified Indian exams. Free and private.`,
   applicationName: 'HateExam',
   keywords: [
     'exam photo resizer',
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
   manifest: '/manifest.webmanifest',
   openGraph: {
     type: 'website',
-    title: 'HateExam — Exam Photo & Signature Resizer',
+    title: 'Free Exam Photo & Signature Resizer | HateExam',
     description:
-      'Resize exam photos and signatures by KB, pixels and format without uploading them.',
+      'Resize exam photos and signatures by KB, pixels and format for Indian application forms without uploading them.',
     siteName: 'HateExam',
   },
   twitter: {
     card: 'summary',
-    title: 'HateExam — Exam Photo & Signature Resizer',
+    title: 'Free Exam Photo & Signature Resizer | HateExam',
     description:
       'Resize exam photos and signatures by KB, pixels and format without uploading them.',
   },

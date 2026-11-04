@@ -473,10 +473,12 @@ export default function Home() {
             <Zap size={14} /> FAST, PRIVATE & EXAM-READY
           </p>
           <h1>
-            Right size <span>matters.</span>
+            Exam photo &amp; <span>signature resizer.</span>
           </h1>
           <p>
-            Officially sourced exam rules. Your files never leave your device.
+            Resize images to exact KB, pixels and JPG or PNG format for NEET,
+            JEE, SSC and 56 major Indian exams. Free, private and processed on
+            your device.
           </p>
           <div className="hero-actions">
             <a className="secondary-link exam-link" href="#requirements">
