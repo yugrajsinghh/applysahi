@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowRight, ExternalLink, ShieldCheck } from 'lucide-react';
 import { examSlug, getExamBySlug, priorityExams } from '@/lib/exam-seo';
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://hateexam.com';
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -34,19 +37,19 @@ export default async function ExamPage({ params }: PageProps) {
     dateModified: '2026-11-04',
     author: { '@type': 'Organization', name: 'HateExam' },
     publisher: { '@type': 'Organization', name: 'HateExam' },
-    mainEntityOfPage: `/exams/${slug}`,
+    mainEntityOfPage: `${siteUrl}/exams/${slug}`,
   };
 
   return (
     <main className="exam-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <header className="exam-page-header shell">
-        <a className="brand" href="/" aria-label="HateExam home"><span aria-hidden="true">↓</span> HateExam</a>
-        <a className="primary-link" href={`/?exam=${slug}#editor`}>Resize now <ArrowRight size={17} /></a>
+        <Link className="brand" href="/" aria-label="HateExam home"><span aria-hidden="true">↓</span> HateExam</Link>
+        <Link className="primary-link" href={`/?exam=${slug}#editor`}>Resize now <ArrowRight size={17} /></Link>
       </header>
       <article className="exam-article shell">
         <nav className="breadcrumbs" aria-label="Breadcrumb">
-          <a href="/">Home</a><span>/</span><a href="/#requirements">Exam sizes</a><span>/</span><span>{exam.name}</span>
+          <Link href="/">Home</Link><span>/</span><Link href="/exams">Exam sizes</Link><span>/</span><span>{exam.name}</span>
         </nav>
         <p className="eyebrow">{exam.authority} · {exam.family} · {exam.cycle}</p>
         <h1>{exam.name} photo and signature size</h1>
@@ -63,7 +66,7 @@ export default async function ExamPage({ params }: PageProps) {
                 <h3>{asset.name}</h3><p>{asset.requirement}</p>
                 {asset.dimensions && <p><strong>Dimensions:</strong> {asset.dimensions}</p>}
                 {asset.dimensionNote && <small>{asset.dimensionNote}</small>}
-                {asset.preset && <a href={`/?exam=${slug}&asset=${index}#editor`}>Use {asset.preset.maximumKb} KB{asset.preset.width ? ` · ${asset.preset.width}×${asset.preset.height} px` : ''} preset <ArrowRight size={15} /></a>}
+                {asset.preset && <Link href={`/?exam=${slug}&asset=${index}#editor`}>Use {asset.preset.maximumKb} KB{asset.preset.width ? ` · ${asset.preset.width}×${asset.preset.height} px` : ''} preset <ArrowRight size={15} /></Link>}
               </article>
             ))}
           </div>
@@ -71,15 +74,15 @@ export default async function ExamPage({ params }: PageProps) {
         <section className="exam-steps">
           <h2>How to prepare the file</h2>
           <ol><li>Choose the matching photo or signature preset.</li><li>Select your image. It is processed locally in your browser.</li><li>Check the preview, dimensions and final KB size.</li><li>Download the clearly named file and verify it in the official portal.</li></ol>
-          <a className="primary-link" href={`/?exam=${slug}#editor`}>Open the free resizer <ArrowRight size={17} /></a>
+          <Link className="primary-link" href={`/?exam=${slug}#editor`}>Open the free resizer <ArrowRight size={17} /></Link>
         </section>
         <section className="official-source-box">
           <h2>Official source</h2><p>Requirements can change between application cycles. The active application and current official notice always take priority.</p>
           <a href={exam.sourceUrl} target="_blank" rel="noreferrer">{exam.sourceLabel} <ExternalLink size={15} /></a>
         </section>
-        {related.length > 0 && <section><h2>Related exam sizes</h2><div className="related-exams">{related.map((item) => <a key={item.name} href={`/exams/${examSlug(item.name)}`}>{item.name}<span>{item.cycle} requirements →</span></a>)}</div></section>}
+        {related.length > 0 && <section><h2>Related exam sizes</h2><div className="related-exams">{related.map((item) => <Link key={item.name} href={`/exams/${examSlug(item.name)}`}>{item.name}<span>{item.cycle} requirements →</span></Link>)}</div></section>}
       </article>
-      <footer className="shell footer"><a href="/about">About</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></footer>
+      <footer className="shell footer"><Link href="/about">About</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></footer>
     </main>
   );
 }

@@ -6,7 +6,7 @@ const siteUrl =
   'https://hateexam.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ['', '/about', '/privacy', '/terms', '/tools/photo-signature-resizer', '/tools/exam-size-finder', '/tools/image-to-pdf', '/tools/heic-to-jpg', '/tools/pdf-merger'];
+  const paths = ['', '/exams', '/about', '/privacy', '/terms', '/tools/photo-signature-resizer', '/tools/exam-size-finder', '/tools/image-to-pdf', '/tools/heic-to-jpg', '/tools/pdf-merger'];
   const pages: MetadataRoute.Sitemap = paths.map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date('2026-11-04'),

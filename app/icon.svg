@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="HateExam">
+  <rect width="48" height="48" rx="12" fill="#16834f"/>
+  <path d="M24 11v23m-9-9 9 9 9-9" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="37" cy="11" r="4" fill="#1558a6"/>
+</svg>

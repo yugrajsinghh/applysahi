@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <InfoPage eyebrow="PRIVACY POLICY" title="Your files stay on your device." updated="18 October 2026">
+    <InfoPage eyebrow="PRIVACY POLICY" title="Your files stay on your device." updated="12 November 2026">
       <p>
         This policy explains how HateExam handles information when you use
         hateexam.com. The current image editor processes selected photographs
@@ -39,11 +39,14 @@ export default function PrivacyPage() {
       </p>
       <h2>Cookies, analytics and advertising</h2>
       <p>
-        HateExam currently uses no advertising cookies, behavioural advertising
-        or third-party analytics. Essential browser or hosting functions may use
-        limited storage needed to operate or secure the site. We will update this
-        policy and, where required, request consent before introducing analytics
-        or advertising technologies.
+        HateExam uses Cloudflare Web Analytics to understand aggregated website
+        traffic and performance. Cloudflare may process technical request data
+        such as the page visited, browser type, approximate location and
+        timestamp. HateExam currently does not use advertising cookies or
+        behavioural advertising. Essential browser and hosting functions may
+        use limited storage needed to operate or secure the site. We will update
+        this policy and, where required, request consent before introducing
+        advertising or additional analytics technologies.
       </p>
       <h2>Sharing and retention</h2>
       <p>
@@ -76,7 +79,7 @@ export default function PrivacyPage() {
       <h2>Changes to this policy</h2>
       <p>
         We will revise the date above when this policy materially changes. A
-        future account system, cloud file processing, analytics or advertising
+        future account system, cloud file processing or advertising
         feature will require a corresponding update before launch.
       </p>
     </InfoPage>

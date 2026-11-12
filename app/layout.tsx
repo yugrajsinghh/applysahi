@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { examRequirements } from '@/lib/exam-requirements';
 import './globals.css';
 
@@ -23,6 +24,10 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/' },
   manifest: '/manifest.webmanifest',
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml', sizes: 'any' }],
+    shortcut: '/favicon.svg',
+  },
   openGraph: {
     type: 'website',
     title: 'Free Exam Photo & Signature Resizer | HateExam',
@@ -53,6 +58,7 @@ export default function RootLayout({
       name: 'HateExam',
       alternateName: ['HateExam Exam Resizer'],
       url: siteUrl,
+      image: `${siteUrl}/favicon.svg`,
     };
   const applicationStructuredData = {
       '@context': 'https://schema.org',
@@ -86,7 +92,9 @@ export default function RootLayout({
           }}
         />
         {children}
-        <script
+        <Script
+          id="cloudflare-web-analytics"
+          strategy="afterInteractive"
           type="module"
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon={JSON.stringify({
