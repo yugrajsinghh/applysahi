@@ -76,6 +76,14 @@ export default function RootLayout({
         'JPG, PNG and WebP export',
       ],
     };
+  const organizationStructuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'HateExam',
+      url: siteUrl,
+      logo: `${siteUrl}/favicon.svg`,
+      description: 'Independent browser-based tools and sourced file-requirement guides for Indian exam applicants.',
+    };
   return (
     <html lang="en">
       <body>
@@ -83,6 +91,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(websiteStructuredData),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationStructuredData),
           }}
         />
         <script

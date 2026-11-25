@@ -6,16 +6,16 @@ const siteUrl =
   'https://hateexam.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ['', '/exams', '/about', '/privacy', '/terms', '/tools/photo-signature-resizer', '/tools/exam-size-finder', '/tools/image-to-pdf', '/tools/heic-to-jpg', '/tools/pdf-merger'];
+  const paths = ['', '/exams', '/about', '/privacy', '/terms', '/tools/photo-signature-resizer', '/tools/exam-size-finder', '/tools/exam-file-checker', '/tools/image-compressor', '/tools/png-to-jpg', '/tools/image-to-pdf', '/tools/heic-to-jpg', '/tools/pdf-merger'];
   const pages: MetadataRoute.Sitemap = paths.map((path) => ({
     url: `${siteUrl}${path}`,
-    lastModified: new Date('2026-11-04'),
+    lastModified: new Date('2026-11-25'),
     changeFrequency: path ? 'monthly' : 'weekly',
     priority: path.startsWith('/tools/') ? 0.9 : path ? 0.6 : 1,
   }));
   const examPages: MetadataRoute.Sitemap = priorityExams.map((exam) => ({
     url: `${siteUrl}/exams/${examSlug(exam.name)}`,
-    lastModified: new Date('2026-11-04'),
+    lastModified: new Date('2026-11-25'),
     changeFrequency: 'monthly',
     priority: 0.8,
   }));

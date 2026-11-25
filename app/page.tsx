@@ -523,7 +523,7 @@ export default function Home() {
       <section id="tools" className="shell tool-directory" aria-labelledby="tools-title">
         <div className="section-heading-simple">
           <div><p className="eyebrow">CHOOSE WHAT YOU NEED</p><h2 id="tools-title">Student file tools</h2></div>
-          <p>Five focused tools. No sign-up, watermark or file upload.</p>
+          <p>{siteTools.length} focused tools. No sign-up, watermark or file upload.</p>
         </div>
         <div className="tool-card-grid">
           {siteTools.map(({ slug, name, short, icon: Icon, color }) => (
