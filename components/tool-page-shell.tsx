@@ -28,7 +28,7 @@ export function ToolPageShell({
       </header>
       <section className="tool-hero shell">
         <div>
-          <p className="eyebrow">FREE STUDENT TOOL · VERSION 7</p>
+          <p className="eyebrow">FREE STUDENT TOOL · VERSION 8</p>
           <h1>{title}</h1>
           <p>{description}</p>
         </div>

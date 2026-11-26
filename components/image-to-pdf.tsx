@@ -66,7 +66,9 @@ export function ImageToPdf() {
     const next = [...files, ...valid].slice(0, MAX_FILES);
     setFiles(next);
     if (valid.length !== selected.length) {
-      setError('Some files were skipped. Use JPG, PNG or WebP under 15 MB each.');
+      setError(
+        'Some files were skipped. Use JPG, PNG or WebP under 15 MB each.',
+      );
     } else if (files.length + valid.length > MAX_FILES) {
       setError(`You can combine up to ${MAX_FILES} images at once.`);
     }
@@ -79,7 +81,7 @@ export function ImageToPdf() {
     try {
       const { PDFDocument } = await import('pdf-lib');
       const pdfDocument = await PDFDocument.create();
-      pdfDocument.setCreator('HateExam Version 7');
+      pdfDocument.setCreator('HateExam Version 8');
       pdfDocument.setProducer('HateExam browser PDF tool');
 
       for (const file of files) {
@@ -137,7 +139,7 @@ export function ImageToPdf() {
     <section id="image-to-pdf" className="pdf-tool-section">
       <div className="shell pdf-tool">
         <div className="pdf-tool-intro">
-          <p className="eyebrow">NEW IN VERSION 7</p>
+          <p className="eyebrow">PRIVATE PDF TOOL</p>
           <h2>Images to PDF</h2>
           <p>
             Combine application documents, certificates or photographs into one
@@ -161,10 +163,19 @@ export function ImageToPdf() {
           />
           <div className="pdf-builder-heading">
             <div>
-              <strong>{files.length || 'No'} image{files.length === 1 ? '' : 's'} selected</strong>
-              <small>Pages follow your selection order · maximum {MAX_FILES}</small>
+              <strong>
+                {files.length || 'No'} image{files.length === 1 ? '' : 's'}{' '}
+                selected
+              </strong>
+              <small>
+                Pages follow your selection order · maximum {MAX_FILES}
+              </small>
             </div>
-            <Button variant="outline" onClick={() => input.current?.click()} disabled={busy}>
+            <Button
+              variant="outline"
+              onClick={() => input.current?.click()}
+              disabled={busy}
+            >
               <Plus size={17} /> Add images
             </Button>
           </div>
@@ -175,13 +186,17 @@ export function ImageToPdf() {
                 <li key={`${file.name}-${file.lastModified}-${index}`}>
                   <FileImage size={18} />
                   <span>
-                    <strong>{index + 1}. {file.name}</strong>
+                    <strong>
+                      {index + 1}. {file.name}
+                    </strong>
                     <small>{(file.size / 1024 / 1024).toFixed(2)} MB</small>
                   </span>
                   <button
                     type="button"
                     aria-label={`Remove ${file.name}`}
-                    onClick={() => setFiles(files.filter((_, item) => item !== index))}
+                    onClick={() =>
+                      setFiles(files.filter((_, item) => item !== index))
+                    }
                     disabled={busy}
                   >
                     <Trash2 size={17} />
@@ -190,7 +205,11 @@ export function ImageToPdf() {
               ))}
             </ol>
           ) : (
-            <button className="pdf-empty" type="button" onClick={() => input.current?.click()}>
+            <button
+              className="pdf-empty"
+              type="button"
+              onClick={() => input.current?.click()}
+            >
               <FileImage size={28} />
               <strong>Choose JPG, PNG or WebP images</strong>
               <small>Each image becomes one PDF page</small>
@@ -200,25 +219,51 @@ export function ImageToPdf() {
           <div className="pdf-options">
             <label>
               PDF filename
-              <input value={filename} onChange={(event) => setFilename(event.target.value)} maxLength={60} />
+              <input
+                value={filename}
+                onChange={(event) => setFilename(event.target.value)}
+                maxLength={60}
+              />
             </label>
             <fieldset>
               <legend>Page size</legend>
               <label>
-                <input type="radio" name="page-size" checked={pageMode === 'a4'} onChange={() => setPageMode('a4')} />
+                <input
+                  type="radio"
+                  name="page-size"
+                  checked={pageMode === 'a4'}
+                  onChange={() => setPageMode('a4')}
+                />
                 A4
               </label>
               <label>
-                <input type="radio" name="page-size" checked={pageMode === 'fit'} onChange={() => setPageMode('fit')} />
+                <input
+                  type="radio"
+                  name="page-size"
+                  checked={pageMode === 'fit'}
+                  onChange={() => setPageMode('fit')}
+                />
                 Fit image
               </label>
             </fieldset>
           </div>
-          {error && <p className="pdf-error" role="alert">{error}</p>}
-          <Button className="pdf-download" onClick={() => void makePdf()} disabled={!files.length || busy}>
-            <Download size={18} /> {busy ? 'Creating PDF…' : 'Create and download PDF'}
+          {error && (
+            <p className="pdf-error" role="alert">
+              {error}
+            </p>
+          )}
+          <Button
+            className="pdf-download"
+            onClick={() => void makePdf()}
+            disabled={!files.length || busy}
+          >
+            <Download size={18} />{' '}
+            {busy ? 'Creating PDF…' : 'Create and download PDF'}
           </Button>
-          <small className="pdf-disclaimer">Check page order and readability before uploading the PDF to an official portal.</small>
+          <small className="pdf-disclaimer">
+            Check page order and readability before uploading the PDF to an
+            official portal.
+          </small>
         </div>
       </div>
     </section>

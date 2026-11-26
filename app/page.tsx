@@ -453,7 +453,7 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <main className="home-page">
       <a className="skip-link" href="#editor">
         Skip to photo tool
       </a>
@@ -1054,9 +1054,10 @@ export default function Home() {
           <details>
             <summary>Can I use PDFs or iPhone HEIC photos?</summary>
             <p>
-              Yes. Version 7 includes Images to PDF, PDF merger and HEIC to JPG
-              as separate tools. Convert the file first, then use the photo
-              resizer if your application also has a KB or pixel limit.
+              Yes. Version 8 includes Images to PDF, PDF merger, PDF compressor
+              and HEIC to JPG as separate tools. Convert the file first, then
+              use the photo resizer if your application also has a KB or pixel
+              limit.
             </p>
           </details>
         </div>
@@ -1086,7 +1087,7 @@ export default function Home() {
           <a href="/guides">Guides</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
-          <span className="version-badge">Version 7</span>
+          <span className="version-badge">Version 8</span>
         </div>
         <a href="#editor">Back to editor ↑</a>
       </footer>

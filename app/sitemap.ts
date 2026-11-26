@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/privacy',
     '/terms',
     '/tools/photo-signature-resizer',
+    '/tools/exam-photo-studio',
     '/tools/exam-size-finder',
     '/tools/exam-file-checker',
     '/tools/image-compressor',
@@ -22,16 +23,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/tools/image-to-pdf',
     '/tools/heic-to-jpg',
     '/tools/pdf-merger',
+    '/tools/pdf-compressor',
   ];
   const pages: MetadataRoute.Sitemap = paths.map((path) => ({
     url: `${siteUrl}${path}`,
-    lastModified: new Date('2026-11-25'),
+    lastModified: new Date('2026-11-26'),
     changeFrequency: path ? 'monthly' : 'weekly',
     priority: path.startsWith('/tools/') ? 0.9 : path ? 0.6 : 1,
   }));
   const examPages: MetadataRoute.Sitemap = priorityExams.map((exam) => ({
     url: `${siteUrl}/exams/${examSlug(exam.name)}`,
-    lastModified: new Date('2026-11-25'),
+    lastModified: new Date('2026-11-26'),
     changeFrequency: 'monthly',
     priority: 0.8,
   }));
