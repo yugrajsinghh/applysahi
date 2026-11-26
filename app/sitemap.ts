@@ -1,12 +1,28 @@
 import type { MetadataRoute } from 'next';
 import { examSlug, priorityExams } from '@/lib/exam-seo';
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  'https://hateexam.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://hateexam.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ['', '/exams', '/about', '/privacy', '/terms', '/tools/photo-signature-resizer', '/tools/exam-size-finder', '/tools/exam-file-checker', '/tools/image-compressor', '/tools/png-to-jpg', '/tools/image-to-pdf', '/tools/heic-to-jpg', '/tools/pdf-merger'];
+  const paths = [
+    '',
+    '/exams',
+    '/guides',
+    '/guides/resize-exam-photo-in-kb',
+    '/guides/photo-signature-size',
+    '/guides/jpg-to-pdf-for-exam-form',
+    '/about',
+    '/privacy',
+    '/terms',
+    '/tools/photo-signature-resizer',
+    '/tools/exam-size-finder',
+    '/tools/exam-file-checker',
+    '/tools/image-compressor',
+    '/tools/png-to-jpg',
+    '/tools/image-to-pdf',
+    '/tools/heic-to-jpg',
+    '/tools/pdf-merger',
+  ];
   const pages: MetadataRoute.Sitemap = paths.map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date('2026-11-25'),

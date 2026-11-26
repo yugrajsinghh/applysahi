@@ -167,7 +167,10 @@ export default function Home() {
       }));
     window.addEventListener('hateexam:file-completed', recordCompletedFile);
     return () =>
-      window.removeEventListener('hateexam:file-completed', recordCompletedFile);
+      window.removeEventListener(
+        'hateexam:file-completed',
+        recordCompletedFile,
+      );
   }, []);
 
   useEffect(() => {
@@ -175,7 +178,8 @@ export default function Home() {
     const selectedExam = getExamBySlug(params.get('exam') ?? '');
     if (!selectedExam) return;
     const assetIndex = Number(params.get('asset') ?? 0);
-    const selectedAsset = selectedExam.assets[assetIndex] ?? selectedExam.assets[0];
+    const selectedAsset =
+      selectedExam.assets[assetIndex] ?? selectedExam.assets[0];
     if (!selectedAsset?.preset) return;
     const preset = selectedAsset.preset;
     queueMicrotask(() => {
@@ -184,7 +188,10 @@ export default function Home() {
       setWidth(preset.width ? String(preset.width) : '');
       setHeight(preset.height ? String(preset.height) : '');
       setPresetLabel(`${selectedExam.name} — ${selectedAsset.name}`);
-      setDownloadContext({ exam: selectedExam.name, asset: selectedAsset.name });
+      setDownloadContext({
+        exam: selectedExam.name,
+        asset: selectedAsset.name,
+      });
     });
   }, []);
 
@@ -453,44 +460,47 @@ export default function Home() {
       <header className="site-header">
         <div className="shell header-inner">
           <a className="brand" href="/" aria-label="HateExam home">
-            <span>
-              <ArrowDown size={21} />
+            <span className="brand-mark" aria-hidden="true">
+              HE
             </span>
-            HateExam
+            <span className="brand-name">HateExam</span>
           </a>
           <nav aria-label="Main navigation">
             <a href="#tools">All tools</a>
-            <a href="#editor">Photo resizer</a>
             <a href="#requirements">Exam sizes</a>
-            <a href="#guide">How to use</a>
-            <span className="free-label">Free · No sign-up</span>
+            <a href="/guides">Guides</a>
+            <a className="nav-cta" href="#editor">
+              Resize a photo
+            </a>
           </nav>
         </div>
       </header>
       <section className="shell intro">
         <div className="intro-copy">
           <p className="eyebrow">
-            <Zap size={14} /> FAST, PRIVATE & EXAM-READY
+            <Zap size={14} /> FREE · PRIVATE · MADE FOR INDIAN EXAM FORMS
           </p>
           <h1>
-            Exam photo &amp; <span>signature resizer.</span>
+            Get your exam files <span>accepted the first time.</span>
           </h1>
           <p>
-            Resize images to exact KB, pixels and JPG or PNG format for NEET,
-            JEE, SSC and 56 major Indian exams. Free, private and processed on
-            your device.
+            Resize photos and signatures to exact KB and pixels, check the
+            result, and download an upload-ready file for NEET, JEE, SSC and
+            {` ${examRequirements.length}`} major Indian exams.
           </p>
           <div className="hero-actions">
-            <a className="secondary-link exam-link" href="#requirements">
-              Find my exam size <ArrowDown size={17} />
-            </a>
             <a className="primary-link" href="#editor">
-              Resize my image <ArrowDown size={17} />
+              Resize photo now <ArrowDown size={17} />
+            </a>
+            <a className="secondary-link exam-link" href="#requirements">
+              Find official size <ArrowRight size={17} />
             </a>
           </div>
           <div className="creator-trust">
-            <span>Made by a NEET guy</span>
-            <small>Built for students filling real application forms</small>
+            <span>
+              <LockKeyhole size={13} /> No image upload
+            </span>
+            <small>Files are processed inside your browser</small>
           </div>
         </div>
         <div className="hero-proof">
@@ -520,17 +530,66 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="tools" className="shell tool-directory" aria-labelledby="tools-title">
+      <section
+        id="tools"
+        className="shell tool-directory"
+        aria-labelledby="tools-title"
+      >
         <div className="section-heading-simple">
-          <div><p className="eyebrow">CHOOSE WHAT YOU NEED</p><h2 id="tools-title">Student file tools</h2></div>
-          <p>{siteTools.length} focused tools. No sign-up, watermark or file upload.</p>
+          <div>
+            <p className="eyebrow">CHOOSE WHAT YOU NEED</p>
+            <h2 id="tools-title">Student file tools</h2>
+          </div>
+          <p>
+            {siteTools.length} focused tools. No sign-up, watermark or file
+            upload.
+          </p>
         </div>
         <div className="tool-card-grid">
           {siteTools.map(({ slug, name, short, icon: Icon, color }) => (
-            <a key={slug} href={`/tools/${slug}`} className={`tool-card tool-card-${color}`}>
-              <span><Icon size={23}/></span><strong>{name}</strong><p>{short}</p><small>Open tool <ArrowRight size={14}/></small>
+            <a
+              key={slug}
+              href={`/tools/${slug}`}
+              className={`tool-card tool-card-${color}`}
+            >
+              <span>
+                <Icon size={23} />
+              </span>
+              <strong>{name}</strong>
+              <p>{short}</p>
+              <small>
+                Open tool <ArrowRight size={14} />
+              </small>
             </a>
           ))}
+        </div>
+      </section>
+      <section className="shell search-paths" aria-labelledby="popular-title">
+        <div>
+          <p className="eyebrow">POPULAR TASKS</p>
+          <h2 id="popular-title">Start with the result you need</h2>
+        </div>
+        <div className="search-path-grid">
+          <a href="/tools/photo-signature-resizer">
+            <strong>Photo under 50 KB</strong>
+            <span>Resize and verify pixels</span>
+            <ArrowRight size={18} />
+          </a>
+          <a href="/tools/photo-signature-resizer">
+            <strong>Signature under 20 KB</strong>
+            <span>Crop blank space and compress</span>
+            <ArrowRight size={18} />
+          </a>
+          <a href="/tools/image-to-pdf">
+            <strong>JPG images to one PDF</strong>
+            <span>Make an exam document PDF</span>
+            <ArrowRight size={18} />
+          </a>
+          <a href="/tools/heic-to-jpg">
+            <strong>iPhone photo to JPG</strong>
+            <span>Convert HEIC without uploading</span>
+            <ArrowRight size={18} />
+          </a>
         </div>
       </section>
       <section
@@ -1001,6 +1060,9 @@ export default function Home() {
             </p>
           </details>
         </div>
+        <a className="guide-library-link" href="/guides">
+          Read all exam-file guides <ArrowRight size={17} />
+        </a>
       </section>
       <section id="privacy" className="privacy-strip">
         <div className="shell">
@@ -1021,6 +1083,7 @@ export default function Home() {
         </a>
         <div className="footer-links">
           <a href="/about">About</a>
+          <a href="/guides">Guides</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
           <span className="version-badge">Version 7</span>
@@ -1028,7 +1091,9 @@ export default function Home() {
         <a href="#editor">Back to editor ↑</a>
       </footer>
       <div className="brand-stamp-row">
-        <span className="brand-stamp" aria-label="YRSC brand stamp">YRSC</span>
+        <span className="brand-stamp" aria-label="YRSC brand stamp">
+          YRSC
+        </span>
       </div>
     </main>
   );
