@@ -481,21 +481,12 @@ export default function Home() {
             <Zap size={14} /> FREE · PRIVATE · MADE FOR INDIAN EXAM FORMS
           </p>
           <h1>
-            Get your exam files <span>accepted the first time.</span>
+            What do you need <span>to prepare?</span>
           </h1>
           <p>
-            Resize photos and signatures to exact KB and pixels, check the
-            result, and download an upload-ready file for NEET, JEE, SSC and
-            {` ${examRequirements.length}`} major Indian exams.
+            Pick a task and start immediately. Every tool works privately in
+            your browser—no account, upload or watermark.
           </p>
-          <div className="hero-actions">
-            <a className="primary-link" href="#editor">
-              Resize photo now <ArrowDown size={17} />
-            </a>
-            <a className="secondary-link exam-link" href="#requirements">
-              Find official size <ArrowRight size={17} />
-            </a>
-          </div>
           <div className="creator-trust">
             <span>
               <LockKeyhole size={13} /> No image upload
@@ -503,31 +494,28 @@ export default function Home() {
             <small>Files are processed inside your browser</small>
           </div>
         </div>
-        <div className="hero-proof">
-          <div>
-            <strong>{examRequirements.length}</strong>
-            <span>verified exam guides</span>
-          </div>
-          <div>
-            <strong>{usageStats.completedFiles.toLocaleString('en-IN')}</strong>
-            <span>files prepared on this device</span>
-          </div>
-          <div>
-            <strong>
-              {usageStats.conversionAttempts >= 20
-                ? `${Math.round(
-                    (usageStats.successfulConversions /
-                      usageStats.conversionAttempts) *
-                      100,
-                  )}%`
-                : 'Live'}
-            </strong>
-            <span>
-              {usageStats.conversionAttempts >= 20
-                ? 'measured size-target success'
-                : 'success measurement starting'}
-            </span>
-          </div>
+        <div className="direct-choice" aria-label="Choose a task">
+          <a className="direct-choice-primary" href="#editor">
+            <span>Most popular</span>
+            <strong>Resize photo or signature</strong>
+            <small>Set exact KB, pixels and format</small>
+            <ArrowDown size={18} />
+          </a>
+          <a href="/tools/image-to-pdf">
+            <strong>Images to PDF</strong>
+            <small>Combine JPG or PNG pages</small>
+            <ArrowRight size={17} />
+          </a>
+          <a href="/tools/pdf-compressor">
+            <strong>Compress PDF</strong>
+            <small>Reduce scanned document size</small>
+            <ArrowRight size={17} />
+          </a>
+          <a href="#requirements">
+            <strong>Find exam size</strong>
+            <small>{examRequirements.length} verified exam guides</small>
+            <ArrowRight size={17} />
+          </a>
         </div>
       </section>
       <section
