@@ -478,7 +478,7 @@ export default function Home() {
       <section className="shell intro">
         <div className="intro-copy">
           <p className="eyebrow">
-            <Zap size={14} /> FREE · PRIVATE · MADE FOR INDIAN EXAM FORMS
+            <Zap size={14} /> VERSION 8 · FREE · PRIVATE · MADE FOR EXAM FORMS
           </p>
           <h1>
             What do you need <span>to prepare?</span>
