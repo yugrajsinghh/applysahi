@@ -3,6 +3,7 @@
 /* oxlint-disable react-hooks/exhaustive-deps */
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import {
   Download,
   ImagePlus,
@@ -254,11 +255,19 @@ export function ExamPhotoStudio() {
         <div className="studio-preview">
           <canvas ref={preview} />
           {!file && (
-            <div>
-              <ImagePlus size={30} />
-              <strong>Your exam photo preview</strong>
-              <span>Choose a photo to begin</span>
-            </div>
+            <figure className="studio-example">
+              <span>Example output</span>
+              <Image
+                src="/exam-photo-studio-example.jpg"
+                alt="Example exam output with candidate name and date"
+                width="413"
+                height="531"
+              />
+              <figcaption>
+                Your photo will appear here with the selected framing, name and
+                date.
+              </figcaption>
+            </figure>
           )}
         </div>
       </div>
